@@ -54,7 +54,7 @@ namespace botsay
         public static string catchascii()
         {
             string asciisrc = getsrc();
-            return  System.IO.File.ReadAllText($@"C:\Develop\botsay\.NET-Global-Tools\AsciiArt\{asciisrc}");
+            return  System.IO.File.ReadAllText($@"..\.NET-Global-Tools\AsciiArt\{asciisrc}");
         }
     }
 }
