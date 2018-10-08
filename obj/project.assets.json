@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Develop\\botsay\\botsay.csproj",
+      "projectUniqueName": "C:\\Develop\\botsay\\.NET-Global-Tools\\botsay.csproj",
       "projectName": "botsay",
-      "projectPath": "C:\\Develop\\botsay\\botsay.csproj",
+      "projectPath": "C:\\Develop\\botsay\\.NET-Global-Tools\\botsay.csproj",
       "packagesPath": "C:\\Users\\doma\\.nuget\\packages\\",
-      "outputPath": "C:\\Develop\\botsay\\obj\\",
+      "outputPath": "C:\\Develop\\botsay\\.NET-Global-Tools\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

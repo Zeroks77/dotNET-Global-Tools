@@ -12,10 +12,10 @@
     </packageTypes>
   </metadata>
   <files>
-    <file src="C:\Develop\botsay\bin\Debug\netcoreapp2.1\publish\botsay.deps.json" target="tools\netcoreapp2.1\any\botsay.deps.json" />
-    <file src="C:\Develop\botsay\bin\Debug\netcoreapp2.1\publish\botsay.runtimeconfig.json" target="tools\netcoreapp2.1\any\botsay.runtimeconfig.json" />
-    <file src="C:\Develop\botsay\obj\DotnetToolSettings.xml" target="tools\netcoreapp2.1\any\DotnetToolSettings.xml" />
-    <file src="C:\Develop\botsay\bin\Debug\netcoreapp2.1\publish\botsay.dll" target="tools\netcoreapp2.1\any\botsay.dll" />
-    <file src="C:\Develop\botsay\bin\Debug\netcoreapp2.1\publish\botsay.pdb" target="tools\netcoreapp2.1\any\botsay.pdb" />
+    <file src="C:\Develop\botsay\.NET-Global-Tools\bin\Debug\netcoreapp2.1\publish\botsay.deps.json" target="tools\netcoreapp2.1\any\botsay.deps.json" />
+    <file src="C:\Develop\botsay\.NET-Global-Tools\bin\Debug\netcoreapp2.1\publish\botsay.runtimeconfig.json" target="tools\netcoreapp2.1\any\botsay.runtimeconfig.json" />
+    <file src="C:\Develop\botsay\.NET-Global-Tools\obj\DotnetToolSettings.xml" target="tools\netcoreapp2.1\any\DotnetToolSettings.xml" />
+    <file src="C:\Develop\botsay\.NET-Global-Tools\bin\Debug\netcoreapp2.1\publish\botsay.dll" target="tools\netcoreapp2.1\any\botsay.dll" />
+    <file src="C:\Develop\botsay\.NET-Global-Tools\bin\Debug\netcoreapp2.1\publish\botsay.pdb" target="tools\netcoreapp2.1\any\botsay.pdb" />
   </files>
 </package>
