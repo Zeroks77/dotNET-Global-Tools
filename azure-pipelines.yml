@@ -50,7 +50,7 @@ steps:
 
   condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
   
-  verbosityPack: 'detailed'
+
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack prod'
@@ -61,7 +61,7 @@ steps:
 
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   
-  verbosityPack: 'detailed'
+
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
