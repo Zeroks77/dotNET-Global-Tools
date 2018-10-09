@@ -1,4 +1,4 @@
-﻿# First .NET Global Application 
+# First .NET Global Application 
 ## Bottalk
 This is a Application, which show me how to create a Gloabal .NET Tool 
 
