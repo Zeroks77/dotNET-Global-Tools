@@ -28,7 +28,7 @@ steps:
     publishWebProjects: false
 
     projects: '**/src/*.csproj'
-    arguments: --output $(Build.ArtifactStagingDirectory)
+    node '--output $(Build.ArtifactStagingDirectory)'
 
 
 - task: DotNetCoreCLI@2
@@ -39,8 +39,8 @@ steps:
     costum : pack
     node '--version-suffix $(versionSuffixForPre) --include-symbols --include-source'
      where 'and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master')' 
-     versioningScheme: byEnvVar
-    versionEnvVar: versionSuffixForPre
+     versioningScheme: 'byEnvVar'
+    versionEnvVar: 'versionSuffixForPre'
 
     configuration: 'release'
     packagesToPack: '**/src/*.csproj'
