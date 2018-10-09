@@ -32,19 +32,38 @@ steps:
 
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack'
+  displayName: 'dotnet pack pre'
   inputs:
-    command: pack
+    command: costum
+    projects: 'src/**.*csproj'
+    costum : pack
     configuration: 'release'
     packagesToPack: '**/src/*.csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     verbosityPack: 'detailed'
 
+  arguments: '--version-suffix $(versionSuffixForPre) --include-symbols --include-source -o $(Build.ArtifactStagingDirectory)'
+    versioningScheme: byEnvVar
+    versionEnvVar: versionSuffixForPre
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack prod'
+  inputs:
+    command: pack
+    projects: 'src/**.*csproj'
+    configuration: 'release'
+    packagesToPack: '**/src/*.csproj'
+    packDirectory: '$(build.artifactStagingDirectory)'
+    verbosityPack: 'detailed'
+    
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
-  pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+  pathtoPublish: $(Build.ArtifactStagingDirectory)
   artifactName: 'drop' 
-  publishLocation: 'Container'
+  publishLocation: Container
 
 
