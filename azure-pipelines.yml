@@ -47,7 +47,7 @@ steps:
 
   condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
-    configuration: 'release'
+
     packagesToPack: '**/src/*.csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     verbosityPack: 'detailed'
@@ -61,7 +61,7 @@ steps:
        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
        
     projects: 'src/**.*csproj'
-    configuration: 'release'
+
     packagesToPack: '**/src/*.csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     verbosityPack: 'detailed'
