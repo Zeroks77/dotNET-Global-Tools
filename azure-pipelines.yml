@@ -38,7 +38,7 @@ steps:
     projects: 'src/**.*csproj'
     costum : pack
      where 'and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master')' 
-    arguments: '--version-suffix $(versionSuffixForPre) --include-symbols --include-source'
+   node '--version-suffix $(versionSuffixForPre) --include-symbols --include-source'
        
     
     versioningScheme: byEnvVar
