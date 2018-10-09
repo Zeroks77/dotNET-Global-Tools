@@ -33,10 +33,20 @@ steps:
   displayName: 'dotnet pack'
   inputs:
     command: pack
+    configuration: 'release'
+    packagesToPack: '**/src/*.csproj'
+    packDirectory: '$(build.artifactStagingDirectory)'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '0'
+    patchVersion: '0'
+    verbosityPack: 'detailed'
 
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
-
+  pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+  artifactName: 'drop' 
+  publishLocation: 'Container'
 
 
