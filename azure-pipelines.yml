@@ -37,11 +37,9 @@ steps:
     command: costum
     projects: 'src/**.*csproj'
     costum : pack
+    node '--version-suffix $(versionSuffixForPre) --include-symbols --include-source'
      where 'and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master')' 
-   node '--version-suffix $(versionSuffixForPre) --include-symbols --include-source'
-       
-    
-    versioningScheme: byEnvVar
+     versioningScheme: byEnvVar
     versionEnvVar: versionSuffixForPre
 
     configuration: 'release'
