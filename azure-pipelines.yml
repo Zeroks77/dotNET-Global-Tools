@@ -48,11 +48,6 @@ steps:
   condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 
-    packagesToPack: 'src/**.*csproj''
-    packDirectory: '$(build.artifactStagingDirectory)'
-    verbosityPack: 'detailed'
-
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack prod'
   inputs:
