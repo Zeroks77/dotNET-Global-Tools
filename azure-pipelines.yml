@@ -2,13 +2,15 @@ resources:
 - repo: self
 queue:
   name: Hosted VS2017
+variables:
+  versionSuffixForPre: 'pre-$(Build.BuildNumber)'
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: restore
 
-    projects: '**/src/*.csproj'
+    projects: '**/*.csproj'
 
     restoreDirectory: 'Destination dotNET'
 
@@ -16,18 +18,17 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    command: build
-    projects: '**/src/*.csproj'
+    projects: '**/*.csproj'
 
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
   inputs:
     command: publish
-          node '--output $(Build.ArtifactStagingDirectory)'
-    publishWebProjects: false
-    projects: '**/src/*.csproj'
 
+    publishWebProjects: false
+
+    projects: '**/*.csproj'
 
 
 - task: DotNetCoreCLI@2
@@ -47,27 +48,12 @@ steps:
 
   condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
 
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack prod'
   inputs:
     command: pack
 
-       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-       
-    projects: 'src/**.*csproj'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
-    packagesToPack: '**/src/*.csproj'
-    packDirectory: '$(build.artifactStagingDirectory)'
-    verbosityPack: 'detailed'
-    
-
-
-
-- task: PublishBuildArtifacts@1 
-  inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: drop 
-    publishLocation: container
-
-
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
