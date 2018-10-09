@@ -16,6 +16,7 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
+    command: build
     projects: '**/src/*.csproj'
 
 
@@ -27,6 +28,7 @@ steps:
     publishWebProjects: false
 
     projects: '**/src/*.csproj'
+    arguments: --output $(Build.ArtifactStagingDirectory)
 
 
 - task: DotNetCoreCLI@2
