@@ -10,7 +10,7 @@ steps:
   inputs:
     command: restore
 
-    projects: '**/*.csproj'
+    projects: 'src/**.*csproj'
 
     restoreDirectory: 'Destination dotNET'
 
@@ -18,7 +18,7 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: '**/*.csproj'
+    projects: 'src/**.*csproj'
 
 
 - task: DotNetCoreCLI@2
@@ -28,13 +28,15 @@ steps:
 
     publishWebProjects: false
 
-    projects: '**/*.csproj'
+    projects: 'src/**.*csproj'
 
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack pre'
   inputs:
     command: custom
+    
+    configuration: 'release'
 
     projects: 'src/**.*csproj'
 
@@ -47,13 +49,23 @@ steps:
     versionEnvVar: versionSuffixForPre
 
   condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+  
+  verbosityPack: 'detailed'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack prod'
   inputs:
     command: pack
+    
+    configuration: 'release'
 
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  
+  verbosityPack: 'detailed'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'drop' 
+    publishLocation: 'container'
