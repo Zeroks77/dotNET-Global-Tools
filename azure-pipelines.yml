@@ -37,8 +37,7 @@ steps:
     command: costum
     projects: 'src/**.*csproj'
     costum : pack
-        condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
-    
+        condition: 'and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master')' 
     arguments: '--version-suffix $(versionSuffixForPre) --include-symbols --include-source'
     versioningScheme: byEnvVar
     versionEnvVar: versionSuffixForPre
@@ -53,7 +52,7 @@ steps:
   displayName: 'dotnet pack prod'
   inputs:
     command: pack
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      'condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))'
     projects: 'src/**.*csproj'
     configuration: 'release'
     packagesToPack: '**/src/*.csproj'
